@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-09-25T12:08:38.9067749"><title>Configurer Spring Boot pour g&eacute;n&eacute;rer des fichiers WAR | Moze-wildfly-instal</title><script type="application/json" id="virtual-toc-data">[{"id":"pourquoi-utiliser-des-fichiers-war-au-lieu-de-jar","level":0,"title":"Pourquoi utiliser des fichiers WAR au lieu de JAR ?","anchor":"#pourquoi-utiliser-des-fichiers-war-au-lieu-de-jar"},{"id":"tapes","level":0,"title":"Étapes","anchor":"#tapes"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b419/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Configurer Spring Boot pour g&eacute;n&eacute;rer des fichiers WAR | Moze-wildfly-instal"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Moze-wildfly-instal Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/configurer-spring-boot-pour-générer-des-fichiers-war.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Configurer Spring Boot pour g&eacute;n&eacute;rer des fichiers WAR | Moze-wildfly-instal"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/configurer-spring-boot-pour-générer-des-fichiers-war.html#webpage",
+    "url": "writerside-documentation/configurer-spring-boot-pour-générer-des-fichiers-war.html",
+    "name": "Configurer Spring Boot pour g&eacute;n&eacute;rer des fichiers WAR | Moze-wildfly-instal",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Moze-wildfly-instal Help"
+}</script><!-- End Schema.org --></head><body data-id="Configurer-Spring-Boot-pour-générer-des-fichiers-WAR" data-main-title="Configurer Spring Boot pour générer des fichiers WAR" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Moze-wildfly-instal  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Configurer-Spring-Boot-pour-générer-des-fichiers-WAR" id="Configurer-Spring-Boot-pour-générer-des-fichiers-WAR.md">Configurer Spring Boot pour générer des fichiers WAR</h1><p id="szcz1g_3">Dans cette &eacute;tape, nous allons configurer <span class="control" id="szcz1g_6">Spring Boot</span> pour g&eacute;n&eacute;rer des fichiers <span class="control" id="szcz1g_7">WAR</span> au lieu de <span class="control" id="szcz1g_8">JAR</span>, ce qui est n&eacute;cessaire pour le d&eacute;ploiement sur WildFly.</p><section class="chapter"><h2 id="pourquoi-utiliser-des-fichiers-war-au-lieu-de-jar" data-toc="pourquoi-utiliser-des-fichiers-war-au-lieu-de-jar">Pourquoi utiliser des fichiers WAR au lieu de JAR ?</h2><ul class="list _bullet" id="szcz1g_9"><li class="list__item" id="szcz1g_10"><p>Les fichiers <span class="control" id="szcz1g_12">JAR</span> incluent un serveur web int&eacute;gr&eacute;, comme Tomcat ou Jetty, ce qui n'est pas n&eacute;cessaire lorsque vous d&eacute;ployez sur un serveur d'application comme WildFly.</p></li><li class="list__item" id="szcz1g_11"><p>Les fichiers <span class="control" id="szcz1g_13">WAR</span> sont des archives web standard qui permettent &agrave; des serveurs comme WildFly de g&eacute;rer les aspects <span class="control" id="szcz1g_14">Servlet</span> et <span class="control" id="szcz1g_15">JSP</span>.</p></li></ul></section><section class="chapter"><h2 id="tapes" data-toc="tapes">&Eacute;tapes</h2><section class="chapter"><h3 id="1-modifier-le-packaging-du-projet-en-war" data-toc="1-modifier-le-packaging-du-projet-en-war">1. Modifier le packaging du projet en <span class="control" id="szcz1g_25">WAR</span></h3><ul class="list _bullet" id="szcz1g_20"><li class="list__item" id="szcz1g_26"><p>Ouvrez le fichier <code class="code" id="szcz1g_27">build.gradle</code> et modifiez le type de packaging en <span class="control" id="szcz1g_28">WAR</span>.</p></li></ul><p id="szcz1g_21">Voici un exemple de configuration dans <span class="control" id="szcz1g_29">Gradle</span>:</p><div class="code-block" data-lang="gradle">
+plugins {
+id 'java'
+id 'war'
+id 'org.springframework.boot' version '3.3.4'
+id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+mavenCentral()
+}
+
+dependencies {
+// Ajoutez ici les dépendances nécessaires comme Jakarta EE et WildFly
+}
+</div><p id="szcz1g_23">Dans cet exemple :</p><ul class="list _bullet" id="szcz1g_24"><li class="list__item" id="szcz1g_30"><p>Le plugin <span class="control" id="szcz1g_31"><code class="code" id="szcz1g_33">war</code></span> est utilis&eacute; pour g&eacute;n&eacute;rer un fichier <span class="control" id="szcz1g_32">WAR</span> &agrave; partir du projet Spring Boot.</p></li></ul></section><section class="chapter"><h3 id="2-ajouter-une-classe-servletinitializer" data-toc="2-ajouter-une-classe-servletinitializer">2. Ajouter une classe <code class="code" id="szcz1g_39">ServletInitializer</code></h3><p id="szcz1g_35">Pour permettre &agrave; <span class="control" id="szcz1g_40">WildFly</span> de g&eacute;rer le cycle de vie du projet Spring Boot, il faut ajouter une classe qui &eacute;tend <span class="control" id="szcz1g_41"><code class="code" id="szcz1g_42">SpringBootServletInitializer</code></span>.</p><p id="szcz1g_36">Voici le code pour ajouter cette classe :</p><div class="code-block" data-lang="java">
+package com.example.demo;
+
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DemoApplication.class);
+    }
+}
+</div><p id="szcz1g_38">Cette classe <span class="control" id="szcz1g_43">ServletInitializer</span> permet &agrave; <span class="control" id="szcz1g_44">WildFly</span> de g&eacute;rer le d&eacute;ploiement et le d&eacute;marrage de l'application Spring Boot comme un fichier <span class="control" id="szcz1g_45">WAR</span> standard.</p></section><section class="chapter"><h3 id="3-g-n-rer-le-fichier-war" data-toc="3-g-n-rer-le-fichier-war">3. G&eacute;n&eacute;rer le fichier WAR</h3><p id="szcz1g_46">Pour g&eacute;n&eacute;rer un fichier <span class="control" id="szcz1g_49">WAR</span>, utilisez la commande suivante dans votre terminal :</p><div class="code-block" data-lang="bash">
+./gradlew build
+</div><p id="szcz1g_48">Le fichier <span class="control" id="szcz1g_50">WAR</span> sera g&eacute;n&eacute;r&eacute; dans le dossier <code class="code" id="szcz1g_51">build/libs/</code> et sera pr&ecirc;t pour le d&eacute;ploiement sur WildFly.</p></section></section><div class="last-modified">Last modified: 25 September 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="starter.html" class="navigation-links__prev">Installer WildFly sur la machine</a><a href="ed.html" class="navigation-links__next">Configurer le fichier `build.gradle`</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b419/app.js"></script></body></html>
